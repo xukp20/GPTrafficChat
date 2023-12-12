@@ -11,3 +11,11 @@ Put the base url of backend (end with /api/) in this dir, in a file named `base_
 
 Put the key of backend in this dir, in a file named `azure_key.txt`.
 
+## Usage
+Run the app with:
+```bash
+streamlit run chat.py
+```
+
+## Note
+Maybe not be able to occupy the port on the server, try local instead.
