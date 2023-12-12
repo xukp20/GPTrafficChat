@@ -1,8 +1,6 @@
 """
     Built with the basic demo of streamlit chat app
 """
-
-from openai import OpenAI
 import streamlit as st
 from gpt import gpt_call
 MAX_TOKENS=2048
@@ -29,4 +27,4 @@ if prompt := st.chat_input("What is up?"):
         with st.spinner("Thinking..."):
             response = gpt_call(st.session_state.messages, MAX_TOKENS, model=st.session_state.openai_model)
         st.markdown(response)
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+    st.session_state.messages.append({"role": "assistant", "content": response})

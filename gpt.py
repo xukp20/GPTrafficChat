@@ -3,7 +3,7 @@
 """
 
 import random
-import string
+import string, json
 
 import requests, os
 from requests import Response
