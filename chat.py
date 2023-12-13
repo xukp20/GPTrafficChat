@@ -15,6 +15,17 @@ if "messages" not in st.session_state:
 
 # Create sidebar for setting prompt
 st.sidebar.title("Settings")
+# change model
+st.sidebar.subheader("Model")
+st.session_state.openai_model = st.sidebar.selectbox(
+    "Select a model",
+    [
+        "gpt-4-1106-preview",
+        "gpt-3.5-turbo",
+    ],
+    index=0,
+)
+
 system_prompt = st.sidebar.text_area("System Prompt", value="")
 if st.sidebar.button("Clear Chat"):
     st.session_state.messages = []
@@ -35,6 +46,8 @@ if prompt := st.chat_input("What is up?"):
                 "content": system_prompt
             }] + st.session_state.messages
             print(all_messages)
+            print("Using model: ", st.session_state.openai_model)
             response = gpt_call(all_messages, MAX_TOKENS, model=st.session_state.openai_model)
+            print(response)
         st.markdown(response)
     st.session_state.messages.append({"role": "assistant", "content": response})
