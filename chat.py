@@ -3,6 +3,7 @@
 """
 import streamlit as st
 from gpt import gpt_call
+import json
 MAX_TOKENS=2048
 
 st.title("GPTraffic Chat")
@@ -46,6 +47,8 @@ if prompt := st.chat_input("What is up?"):
                 "content": system_prompt
             }] + st.session_state.messages
             print(all_messages)
+            with open("last_messages.json", "w") as f:
+                f.write(json.dumps(all_messages))
             print("Using model: ", st.session_state.openai_model)
             response = gpt_call(all_messages, MAX_TOKENS, model=st.session_state.openai_model)
             print(response)

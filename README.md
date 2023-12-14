@@ -7,6 +7,12 @@ Install streamlit with pip:
 pip install streamlit
 ```
 
+Install backoff for api retry:
+```bash
+pip install backoff
+```
+
+
 Put the base url of backend (end with /api/) in this dir, in a file named `base_url.txt`.
 
 Put the key of backend in this dir, in a file named `azure_key.txt`.

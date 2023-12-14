@@ -19,18 +19,28 @@ def generate_uuid(length=10):
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for _ in range(length))
 
+# old handler
+# def handle_reply(response: Response) -> str:
+#     if response.status_code == 200:
+#         reply = response.json()
+#         status = reply['status']
+#         info = reply['info']
+#         uuid = reply['uuid']
+#         if status == 0:
+#             return info
+#         else:
+#             raise CommonException(f"Failed in requesting, uuid: {uuid}, status code: {status}, info: {info}")
+#     else:
+#         raise CommonException("Connection Error")
+
 def handle_reply(response: Response) -> str:
-    if response.status_code == 200:
-        reply = response.json()
-        status = reply['status']
-        info = reply['info']
-        uuid = reply['uuid']
-        if status == 0:
-            return info
-        else:
-            raise CommonException(f"Failed in requesting, uuid: {uuid}, status code: {status}, info: {info}")
-    else:
-        raise CommonException("Connection Error")
+    try:
+        response.raise_for_status()
+        return response.text
+    except requests.HTTPError as e:
+        raise CommonException(f"Error: {e.response.status_code}, {e.response.reason}, {response.text}")
+    except Exception as e:
+        raise CommonException("Unknown: " + str(e))
 
 
 def send_request(apikey: str, request: json) -> str:
