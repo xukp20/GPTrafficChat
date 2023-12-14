@@ -25,3 +25,6 @@ streamlit run chat.py
 
 ## Note
 Maybe not be able to occupy the port on the server, try local instead.
+
+## View
+![demo](image.png)
