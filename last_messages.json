@@ -1,1 +1,10 @@
-[{"role": "system", "content": "You are a math expert"}, {"role": "user", "content": "Hello"}, {"role": "user", "content": "Hello"}, {"role": "assistant", "content": "Hello! How can I assist you today? If you have any questions or need help with math, feel free to ask."}, {"role": "user", "content": "I want to write a program for generating 0-100 primes"}]
+[
+    {
+        "role": "system",
+        "content": ""
+    },
+    {
+        "role": "user",
+        "content": "On a coordinate grid, a point P lies on the y-axis at (0,11) and another point Q is located on a horizontal line 11 units above P. A straight internal road connects these two points with another point R on the x-axis, such that QPR forms a right-angled triangle where QR is the hypotenuse. How long is the road from point Q to point R?"
+    }
+]
